@@ -17,7 +17,7 @@ app.get("/getForecast/", (req, res) => {
   const lon = req.query.lon;
   axios
     .get(
-      `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${appid}`
+      `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely&appid=${appid}`
     )
     .then((response) => {
       res.json(response.data);

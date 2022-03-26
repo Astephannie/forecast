@@ -1,0 +1,141 @@
+body {
+    background-color: rgba(236, 240, 241,1.0);
+    color: #f3f3f3;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1em;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+.frame {
+    background-color: rgba(52, 73, 94,1.0);
+    border-radius: 1em;
+    margin: 2em 0;
+    padding: 2em;
+}
+
+.flex {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.center {
+    text-align: center;
+}
+
+.right {
+    text-align: right;
+}
+
+.frame-left {
+    min-width: 300px;
+}
+
+.frame-left .temperature {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.frame-left .temperature img {
+    max-height: 120px;
+    margin-right: 1em;
+}
+
+.frame-left .temperature h2 {
+    font-size: 5em;
+    font-weight: 400;
+    margin: 0;
+}
+
+.frame-left .temperature .degrees p {
+    color: #ddd;
+    margin: 0.5em;
+}
+
+.frame-left .temperature .degrees .selected {
+    color: #f3f3f3;
+    font-size: 2em;
+    font-weight: 700;
+}
+
+.frame-left h3 {
+    font-size: 1.5em;
+    font-weight: 400;
+    margin-bottom: 0;
+}
+
+.frame-right h2 {
+    font-size: 2em;
+    font-weight: 700;
+    margin: 0;
+}
+
+.frame-right .date {
+    margin-bottom: 2em;
+}
+
+.frame-right p {
+    margin: 0;
+    line-height: 2em;
+}
+
+.margin-0 {
+    margin: 0;
+}
+
+.margin-top {
+    margin-top: 1.5em;
+}
+
+.frame-daily .temperature span.max_temperature {
+    color: #f3f3f3;
+    font-size: 1.7em;
+}
+
+.frame-daily .temperature span.min_temperature {
+    color:#ddd;
+    font-size: 1.2em;
+    padding-left: 1em;
+}
+
+.frame-daily p {
+    font-size: 0.8em;
+}
+
+.frame-daily {
+    padding: 5px 15px;
+    background: rgba(255,255,255, 0.15);
+    border-radius: 5px;
+    min-width: 120px;
+}
+
+/*  GRAPH  */
+
+.graph .labels.x-labels {
+    text-anchor: middle;
+}
+.graph .labels.t-labels {
+    text-anchor: middle;
+}
+.graph .labels.y-labels {
+    text-anchor: end;
+}
+.graph {
+    width: 100%;
+    min-width: 800px;
+    overflow-y: scroll;
+}
+.graph .grid {
+    stroke: #eee;
+    stroke-dasharray: 0;
+    stroke-width: 1;
+}
+.labels {
+    font-size: 13px;
+}
