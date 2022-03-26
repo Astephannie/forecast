@@ -29,6 +29,11 @@ const App = () => {
       const lon = position.coords.longitude;
       setPosition({ lat, lon });
     });
+    if (localStorage.getItem("Unit")) {
+      setUnit(localStorage.getItem("Unit"));
+    } else {
+      localStorage.setItem("Unit", unit);
+    }
   }, []);
 
   useEffect(() => {
@@ -55,6 +60,11 @@ const App = () => {
     }
   }, [error]);
 
+  const changeUnit = (unit) => {
+    setUnit(unit);
+    localStorage.setItem("Unit", unit);
+  };
+
   return (
     <div className="container">
       {position.lat === null && position.lon === null && (
@@ -67,7 +77,7 @@ const App = () => {
             current={data.current}
             pop={data.hourly[0].pop}
             unit={unit}
-            setUnit={setUnit}
+            setUnit={changeUnit}
             daily={data.daily}
             selectDay={selectDay}
           />
