@@ -33,7 +33,7 @@ const Day = ({
     >
       <h3>{forecastDate}</h3>
       <img
-        src={`/icons/${forecastIcon}.svg`}
+        src={`static/icons/${forecastIcon}.svg`}
         alt={forecastIconDescription}
       ></img>
       <h4 className="margin-0">{forecastIconDescription}</h4>

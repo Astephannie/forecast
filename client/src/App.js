@@ -44,6 +44,7 @@ const App = () => {
         setSelectDay(formatLocalDate(DATA.daily[0].dt));
       } else {
         setData(success);
+        setSelectDay(formatLocalDate(success.daily[0].dt));
       }
     }
   }, [success]);

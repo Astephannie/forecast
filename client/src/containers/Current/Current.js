@@ -48,7 +48,7 @@ const Current = ({
         <div className="frame-left center">
           <div className="temperature">
             <img
-              src={`/icons/${currentWeatherIcon}.svg`}
+              src={`static/icons/${currentWeatherIcon}.svg`}
               alt={`${currentWeatherIconDescription}`}
             ></img>
             {isCurrentDay ? (

@@ -6,10 +6,10 @@ const app = express();
 const appid = process.env.API_KEY || "9af1888128abd4b217988954ec61affd";
 const port = process.env.PORT || 3001;
 
-app.use(express.static(path.join(__dirname, "../public")));
-
+app.use(express.static(path.join(__dirname, "../client/build")));
+console.log(path.join(__dirname, "../client/build/static"));
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "../views/app.html"));
+  res.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
 
 app.get("/api/get-one-call/", (req, res) => {
