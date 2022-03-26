@@ -13,6 +13,7 @@ const Current = ({
   setUnit = () => {},
   selectDay = "",
   daily = [],
+  city = {},
 }) => {
   let data = {};
   const isCurrentDay = selectDay === formatLocalDate(daily[0].dt);
@@ -95,7 +96,7 @@ const Current = ({
           <h3>{currentDescription}</h3>
         </div>
         <div className="frame-right right">
-          <h2>Washington, DC</h2>
+          <h2>{city?.name}</h2>
           <p className="date">{`${dayOfWeek} ${isCurrentDay ? time : ""}`}</p>
           <p>
             <strong>Humidity: </strong> {currentHumidity} %
