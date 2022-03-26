@@ -1,7 +1,11 @@
 import React from "react";
-import { capitalize } from "../../utils/utils";
+import {
+  capitalize,
+  kelvinToCelsius,
+  kelvinToFahrenheit,
+} from "../../utils/utils";
 
-const Current = ({ current = {}, pop = 0 }) => {
+const Current = ({ current = {}, pop = 0, unit = "", setUnit = () => {} }) => {
   const date = new Date(current.dt * 1000);
   const dayOfWeek = date.toLocaleString("en-us", { weekday: "long" });
   const time = date.toLocaleString("en-US", {
@@ -10,8 +14,6 @@ const Current = ({ current = {}, pop = 0 }) => {
     hour12: true,
   }); // 01:12 PM
   const currentDate = dayOfWeek + " " + time;
-  const currentTempCelsius = current.temp - 273.15;
-  const currentTempFahrenheit = Math.round((9 / 5) * currentTempCelsius + 32);
   const currentWeatherIcon = current.weather[0].icon;
   const currentWeatherIconDescription = current.weather[0].main;
   const currentDescription = capitalize(current.weather[0].description);
@@ -19,6 +21,10 @@ const Current = ({ current = {}, pop = 0 }) => {
   const currentWind = current.wind_speed;
   const currentPrecipitation = Math.round(pop * 100);
 
+  const changeUnit = (e) => {
+    const unit = e.target.value;
+    setUnit(unit);
+  };
   return (
     <div className="frame">
       <div id="current" className="flex">
@@ -28,10 +34,27 @@ const Current = ({ current = {}, pop = 0 }) => {
               src={`/icons/${currentWeatherIcon}.svg`}
               alt={`${currentWeatherIconDescription}`}
             ></img>
-            <h2>{currentTempFahrenheit}°</h2>
+            <h2>
+              {unit === "F"
+                ? kelvinToFahrenheit(current.temp)
+                : kelvinToCelsius(current.temp)}
+              °
+            </h2>
             <div className="degrees">
-              <p className="selected">F</p>
-              <p>C</p>
+              <button
+                className={unit === "F" ? "selected" : ""}
+                value="F"
+                onClick={changeUnit}
+              >
+                F
+              </button>
+              <button
+                className={unit === "C" ? "selected" : ""}
+                value="C"
+                onClick={changeUnit}
+              >
+                C
+              </button>
             </div>
           </div>
           <h3>{currentDescription}</h3>

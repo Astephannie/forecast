@@ -1,6 +1,7 @@
 import React from "react";
+import { kelvinToCelsius, kelvinToFahrenheit } from "../../utils/utils";
 
-const Hourly = ({ hourly }) => {
+const Hourly = ({ hourly, unit = "F" }) => {
   const getLabelFromDate = (dt) => {
     const date = new Date(dt * 1000);
     const str = date.toLocaleString();
@@ -38,7 +39,9 @@ const Hourly = ({ hourly }) => {
   for (let i = 0; i < temps.length; i = i + 2) {
     tLabels.push(
       <text key={i} x={(i + 1) * 50} fill="#eee" y={points[i][1] - 20}>
-        {Math.round(temps[i] - 273.15)} °C
+        {unit === "F"
+          ? kelvinToFahrenheit(temps[i]) + "°F"
+          : kelvinToCelsius(temps[i]) + "°C"}
       </text>
     );
   }

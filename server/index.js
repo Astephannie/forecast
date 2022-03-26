@@ -3,7 +3,7 @@ const path = require("path");
 const axios = require("axios");
 
 const app = express();
-const appid = process.env.API_KEY || "33b8ca36ca13b6f00c924eda0ae2abce";
+const appid = process.env.API_KEY || "9af1888128abd4b217988954ec61affd";
 const port = process.env.PORT || 3001;
 
 app.use(express.static(path.join(__dirname, "../public")));
