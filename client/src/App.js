@@ -4,13 +4,14 @@ import { Daily } from "./containers/Daily/Daily";
 import { Hourly } from "./containers/Hourly/Hourly";
 import { useRequest } from "./hooks/request";
 import { getOneCall } from "./api/openweather";
-import { getLocation } from "./utils/utils";
+import { formatLocalDate, getLocation } from "./utils/utils";
 import { DATA } from "./utils/data";
 
 const App = () => {
   const [position, setPosition] = useState({ lat: null, lon: null });
   const [unit, setUnit] = useState("F");
   const [data, setData] = useState({});
+  const [selectDay, setSelectDay] = useState("");
 
   const {
     data: success,
@@ -40,6 +41,7 @@ const App = () => {
     if (success) {
       if (success?.name === "Error") {
         setData(DATA);
+        setSelectDay(formatLocalDate(DATA.daily[0].dt));
       } else {
         setData(success);
       }
@@ -65,8 +67,15 @@ const App = () => {
             pop={data.hourly[0].pop}
             unit={unit}
             setUnit={setUnit}
+            daily={data.daily}
+            selectDay={selectDay}
           />
-          <Daily daily={data.daily} unit={unit} />
+          <Daily
+            daily={data.daily}
+            unit={unit}
+            setSelectDay={setSelectDay}
+            selectDay={selectDay}
+          />
           <Hourly hourly={data.hourly} unit={unit} />
         </>
       )}

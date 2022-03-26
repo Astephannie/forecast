@@ -16,3 +16,8 @@ export const kelvinToCelsius = (kelvin) => {
 export const kelvinToFahrenheit = (kelvin) => {
   return Math.round((9 / 5) * (kelvin - 273.15) + 32);
 };
+
+export const formatLocalDate = (dt) => {
+  const date = new Date(dt * 1000);
+  return date.toLocaleString().split(",")[0];
+};

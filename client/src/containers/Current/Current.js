@@ -1,25 +1,42 @@
 import React from "react";
 import {
   capitalize,
+  formatLocalDate,
   kelvinToCelsius,
   kelvinToFahrenheit,
 } from "../../utils/utils";
 
-const Current = ({ current = {}, pop = 0, unit = "", setUnit = () => {} }) => {
-  const date = new Date(current.dt * 1000);
+const Current = ({
+  current = {},
+  pop = 0,
+  unit = "",
+  setUnit = () => {},
+  selectDay = "",
+  daily = [],
+}) => {
+  let data = {};
+  const isCurrentDay = selectDay === formatLocalDate(daily[0].dt);
+  if (isCurrentDay) {
+    data = current;
+  } else {
+    data = daily.find((e) => formatLocalDate(e.dt) === selectDay);
+  }
+
+  const date = new Date(data.dt * 1000);
   const dayOfWeek = date.toLocaleString("en-us", { weekday: "long" });
   const time = date.toLocaleString("en-US", {
     hour: "numeric",
     minute: "numeric",
     hour12: true,
   }); // 01:12 PM
-  const currentDate = dayOfWeek + " " + time;
-  const currentWeatherIcon = current.weather[0].icon;
-  const currentWeatherIconDescription = current.weather[0].main;
-  const currentDescription = capitalize(current.weather[0].description);
-  const currentHumidity = current.humidity;
-  const currentWind = current.wind_speed;
-  const currentPrecipitation = Math.round(pop * 100);
+  const currentWeatherIcon = data.weather[0].icon;
+  const currentWeatherIconDescription = data.weather[0].main;
+  const currentDescription = capitalize(data.weather[0].description);
+  const currentHumidity = data.humidity;
+  const currentWind = data.wind_speed;
+  const currentPrecipitation = isCurrentDay
+    ? Math.round(pop * 100)
+    : Math.round(data.pop * 100);
 
   const changeUnit = (e) => {
     const unit = e.target.value;
@@ -34,12 +51,30 @@ const Current = ({ current = {}, pop = 0, unit = "", setUnit = () => {} }) => {
               src={`/icons/${currentWeatherIcon}.svg`}
               alt={`${currentWeatherIconDescription}`}
             ></img>
-            <h2>
-              {unit === "F"
-                ? kelvinToFahrenheit(current.temp)
-                : kelvinToCelsius(current.temp)}
-              °
-            </h2>
+            {isCurrentDay ? (
+              <h2>
+                {unit === "F"
+                  ? kelvinToFahrenheit(data.temp)
+                  : kelvinToCelsius(data.temp)}
+                °
+              </h2>
+            ) : (
+              <>
+                <h3>
+                  {unit === "F"
+                    ? kelvinToFahrenheit(data.temp.max)
+                    : kelvinToCelsius(data.temp.max)}
+                  °
+                </h3>
+                <h3>
+                  {unit === "F"
+                    ? kelvinToFahrenheit(data.temp.min)
+                    : kelvinToCelsius(data.temp.min)}
+                  °
+                </h3>
+              </>
+            )}
+
             <div className="degrees">
               <button
                 className={unit === "F" ? "selected" : ""}
@@ -61,7 +96,7 @@ const Current = ({ current = {}, pop = 0, unit = "", setUnit = () => {} }) => {
         </div>
         <div className="frame-right right">
           <h2>Washington, DC</h2>
-          <p className="date">{currentDate}</p>
+          <p className="date">{`${dayOfWeek} ${isCurrentDay ? time : ""}`}</p>
           <p>
             <strong>Humidity: </strong> {currentHumidity} %
           </p>
