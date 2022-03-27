@@ -47,7 +47,7 @@ const Current = ({
   };
 
   return (
-    <div className="frame">
+    <section className="frame">
       <div id="current" className="flex">
         <div className="frame-left center">
           <div className="temperature">
@@ -122,7 +122,7 @@ const Current = ({
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

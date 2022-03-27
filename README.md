@@ -4,7 +4,15 @@ The application provides weather information based on your location for the curr
 
 > To get the location data, you must accept that the browser accesses your location data. In addition, the application will store in the localStorage your preferred temperature unit, which can be either degree Celsius or degrees Fahrenheit.
 
+Online test version: https://forecast.annieazana1.repl.co/
+
 ## Steps to install the project locally
+
+### Clone the repository
+
+```sh
+git clone https://github.com/Astephannie/forecast.git
+```
 
 ### Get an OpenWeatherMap API Key
 
@@ -15,15 +23,25 @@ The application provides weather information based on your location for the curr
 
 - In the .env file insert your OpenWeatherMap API key.
 
+`.env`
+
+```
+API_KEY=YOUR_API_KEY
+```
+
 ### Install dependencies and execute the project
 
 Install dependencies
 
-`npm install`
+```sh
+npm install
+```
 
 Run the project server
 
-`npm start`
+```sh
+npm start
+```
 
 Go to the browser: http://localhost:3001/
 
@@ -66,3 +84,5 @@ Figma was used for this purpose. The requirements were considered, and the user 
 URL: https://www.figma.com/file/z00kyBIqdWhcLxwuLPQ1lR/Forecast?node-id=0%3A1
 
 ![Wireframe](/readme_images/wireframe.png "Wireframe")
+
+> Using icons from this repository: https://github.com/basmilius/weather-icons

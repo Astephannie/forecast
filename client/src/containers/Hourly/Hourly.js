@@ -56,7 +56,7 @@ const Hourly = ({ hourly, unit = "F" }) => {
   }
 
   return (
-    <div className="frame">
+    <section className="frame">
       <h2 className="margin-0">Hourly</h2>
       <div className="hourly-graph">
         <svg
@@ -92,7 +92,7 @@ const Hourly = ({ hourly, unit = "F" }) => {
           ></polygon>
         </svg>
       </div>
-    </div>
+    </section>
   );
 };
 
