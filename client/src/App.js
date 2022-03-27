@@ -9,6 +9,7 @@ import {
   getLocation,
   errorCodeMessage,
   getGeoLocationStatus,
+  getGeoLocationMessage,
 } from "./utils/utils";
 
 const App = () => {
@@ -37,6 +38,7 @@ const App = () => {
     getLocation((position) => {
       const lat = position.coords.latitude;
       const lon = position.coords.longitude;
+
       setPosition({ lat, lon });
     });
     if (localStorage.getItem("Unit")) {
@@ -76,19 +78,7 @@ const App = () => {
       <></>
       {position.lat === null && position.lon === null && (
         <p className="initial-message">
-          {`We are obtaining your location data. 
-          
-          ${
-            geolocationStatus === "prompt"
-              ? "You should allow access to your location to continue."
-              : ""
-          }
-          
-          ${
-            geolocationStatus === "reject"
-              ? "You don't allow access to your location."
-              : ""
-          }`}
+          {getGeoLocationMessage(geolocationStatus)}
         </p>
       )}
       {loading && <p className="initial-message">Loading ...</p>}

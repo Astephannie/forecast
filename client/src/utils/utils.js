@@ -64,3 +64,19 @@ export const getGeoLocationStatus = async () => {
   }
   return "unsupported";
 };
+
+export const getGeoLocationMessage = (status) => {
+  if (status === "granted") {
+    return "We are obtaining your location data.";
+  }
+  if (status === "reject") {
+    return "You don't allow access to your location.";
+  }
+  if (status === "prompt") {
+    return "You should allow access to your location to continue.";
+  }
+  if (status === "unsupported") {
+    return "Geolocation is not supported by this browser.";
+  }
+  return "";
+};
