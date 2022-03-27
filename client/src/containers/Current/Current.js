@@ -4,6 +4,8 @@ import {
   formatLocalDate,
   kelvinToCelsius,
   kelvinToFahrenheit,
+  mpsToKmph,
+  mpsToMph,
 } from "../../utils/utils";
 
 const Current = ({
@@ -43,6 +45,7 @@ const Current = ({
     const unit = e.target.value;
     setUnit(unit);
   };
+
   return (
     <div className="frame">
       <div id="current" className="flex">
@@ -80,7 +83,6 @@ const Current = ({
                 </h3>
               </>
             )}
-
             <div className="degrees">
               <button
                 className={unit === "F" ? "selected" : ""}
@@ -109,7 +111,10 @@ const Current = ({
               <strong>Humidity: </strong> {currentHumidity} %
             </p>
             <p>
-              <strong>Wind: </strong> {currentWind} m/sec
+              <strong>Wind: </strong>
+              {unit === "F"
+                ? `${mpsToMph(currentWind)} mph`
+                : `${mpsToKmph(currentWind)} km/h`}
             </p>
             <p>
               <strong>Precipitation: </strong> {currentPrecipitation} %

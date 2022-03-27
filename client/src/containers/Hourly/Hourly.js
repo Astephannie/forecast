@@ -54,6 +54,7 @@ const Hourly = ({ hourly, unit = "F" }) => {
       </text>
     );
   }
+
   return (
     <div className="frame">
       <h2 className="margin-0">Hourly</h2>

@@ -156,10 +156,7 @@ body {
   margin-top: -3em;
 }
 
-.graph .labels.x-labels {
-  text-anchor: middle;
-}
-
+.graph .labels.x-labels,
 .graph .labels.t-labels {
   text-anchor: middle;
 }
@@ -211,12 +208,10 @@ body {
   .frame-right h2 {
     font-size: 2em;
   }
-
   #daily,
   .hourly-graph {
     overflow-x: scroll;
   }
-
   .frame-daily {
     margin: 1.5em 5px;
   }
@@ -226,15 +221,12 @@ body {
   #current.flex {
     flex-direction: column;
   }
-
   .frame {
     padding: 2em 1em;
   }
-
   .right {
     text-align: center;
   }
-
   .frame-left {
     margin: 2em 0;
     min-height: 155px;
@@ -242,16 +234,13 @@ body {
     flex-direction: column;
     justify-content: center;
   }
-
   .frame-right {
     margin-bottom: 1em;
     width: 100%;
   }
-
   .frame-right .date {
     margin-top: 0.5em;
   }
-
   .frame-right .detail {
     display: flex;
     justify-content: space-evenly;
@@ -262,80 +251,62 @@ body {
   body {
     font-size: 0.85em;
   }
-
   .container {
     padding: 0;
   }
-
   .frame {
     margin: 1em 0;
     padding: 2em 1em;
   }
-
   .frame-left {
     min-height: 120px;
     margin-top: 0.5em;
   }
-
   .frame-right .detail {
     flex-direction: column;
   }
-
   .frame-left .temperature img.icon-weather {
     max-height: 70px;
     margin-right: 0.5em;
   }
-
   .frame-left .temperature .degrees {
     max-width: 40px;
     margin-left: 0.5em;
   }
-
   .frame-left .temperature h2 {
     font-size: 3.5em;
   }
-
   .frame-left .temperature img {
     max-height: 50px;
   }
-
   .frame-left h3 {
     font-size: 2.2em;
   }
-
   .frame-left .temperature .degrees button {
     padding: 5px;
   }
-
   .frame-left h4 {
     font-size: 1.2em;
     margin-top: 0.5em;
   }
-
   .frame-right {
     margin-bottom: 0;
   }
-
   .frame-right h2 {
     font-size: 1.5em;
   }
-
   .frame-right p {
     font-size: 1em;
   }
-
   .frame-daily h3 {
     font-size: 1.3em;
   }
-
   .frame-daily h4 {
     font-size: 1.15em;
   }
-
   .frame-daily p {
     font-size: 1em;
   }
-
   .frame-daily img {
     max-height: 90px;
   }
