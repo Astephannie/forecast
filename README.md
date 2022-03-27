@@ -21,6 +21,7 @@ git clone https://github.com/Astephannie/forecast.git
 
 ### Insert API key to the project
 
+- Create an .env file at the root of the project.
 - In the .env file insert your OpenWeatherMap API key.
 
 `.env`
