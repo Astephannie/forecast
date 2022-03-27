@@ -1,26 +1,13 @@
 body {
   background-color: rgba(236, 240, 241, 1);
   color: #f3f3f3;
+  font-family: "Noto Sans", sans-serif;
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 1em;
-  font-family: "Noto Sans", sans-serif;
-}
-
-.frame {
-  background-color: rgba(52, 73, 94, 1);
-  border-radius: 1em;
-  margin: 2em 0;
-  padding: 2em;
-}
-
-.flex {
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
 }
 
 .center {
@@ -30,6 +17,29 @@ body {
 .right {
   text-align: right;
 }
+
+.margin-0 {
+  margin: 0;
+}
+
+.margin-top {
+  margin-top: 1.5em;
+}
+
+.flex {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.frame {
+  background-color: rgba(52, 73, 94, 1);
+  border-radius: 1em;
+  margin: 2em 0;
+  padding: 2em 3em;
+}
+
+/**  CURRENT FRAME  **/
 
 .frame-left {
   min-width: 300px;
@@ -43,8 +53,12 @@ body {
 }
 
 .frame-left .temperature img {
+  max-height: 80px;
+}
+
+.frame-left .temperature img.icon-weather {
   max-height: 120px;
-  margin-right: 1em;
+  margin-right: 1.5em;
 }
 
 .frame-left .temperature h2 {
@@ -53,25 +67,47 @@ body {
   margin: 0;
 }
 
-.frame-left .temperature .degrees p {
+.frame-left .temperature .degrees {
+  max-width: 40px;
+  margin-left: 1.5em;
+}
+
+.frame-left .temperature .degrees button {
   color: #ddd;
   margin: 0.5em;
+  background-color: transparent;
+  margin: 0;
+  border: none;
+  font-size: 1.3em;
+  cursor: pointer;
 }
 
 .frame-left .temperature .degrees .selected {
   color: #f3f3f3;
-  font-size: 2em;
+  font-size: 2.3em;
   font-weight: 700;
 }
 
 .frame-left h3 {
+  font-size: 3em;
+  font-weight: 400;
+  margin: 0;
+}
+
+.frame-left h4 {
   font-size: 1.5em;
   font-weight: 400;
   margin-bottom: 0;
 }
 
+.frame-right p.country {
+  font-size: 0.8em;
+  color: #c8c8c8;
+  margin: 0;
+}
+
 .frame-right h2 {
-  font-size: 2em;
+  font-size: 2.2em;
   font-weight: 700;
   margin: 0;
 }
@@ -83,14 +119,20 @@ body {
 .frame-right p {
   margin: 0;
   line-height: 2em;
+  font-size: 1.2em;
 }
 
-.margin-0 {
-  margin: 0;
+/**  DAILY FRAME  **/
+
+.frame-daily {
+  padding: 5px 15px;
+  border-radius: 5px;
+  min-width: 120px;
+  cursor: pointer;
 }
 
-.margin-top {
-  margin-top: 1.5em;
+.frame-daily.selected {
+  background: rgba(255, 255, 255, 0.15);
 }
 
 .frame-daily .temperature span.max_temperature {
@@ -108,34 +150,193 @@ body {
   font-size: 0.8em;
 }
 
-.frame-daily {
-  padding: 5px 15px;
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 5px;
-  min-width: 120px;
-}
+/**  GRAPH  **/
 
-/*  GRAPH  */
+.hourly-graph {
+  margin-top: -3em;
+}
 
 .graph .labels.x-labels {
   text-anchor: middle;
 }
+
 .graph .labels.t-labels {
   text-anchor: middle;
 }
+
 .graph .labels.y-labels {
   text-anchor: end;
 }
+
 .graph {
   width: 100%;
-  min-width: 800px;
+  min-width: 930px;
   overflow-y: scroll;
 }
+
 .graph .grid {
   stroke: #eee;
   stroke-dasharray: 0;
   stroke-width: 1;
 }
+
 .labels {
   font-size: 13px;
+}
+
+/** MEDIA QUERIES **/
+
+@media only screen and (max-width: 1050px) {
+  body {
+    font-size: 0.9em;
+  }
+  .frame {
+    padding: 2em;
+  }
+  .frame-left {
+    min-width: 280px;
+  }
+  .frame-left .temperature h2 {
+    font-size: 4em;
+  }
+  .frame-left .temperature img.icon-weather {
+    max-height: 100px;
+  }
+  .frame-left .temperature img {
+    max-height: 60px;
+  }
+  .frame-left h3 {
+    font-size: 2.5em;
+  }
+  .frame-right h2 {
+    font-size: 2em;
+  }
+
+  #daily,
+  .hourly-graph {
+    overflow-x: scroll;
+  }
+
+  .frame-daily {
+    margin: 1.5em 5px;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  #current.flex {
+    flex-direction: column;
+  }
+
+  .frame {
+    padding: 2em 1em;
+  }
+
+  .right {
+    text-align: center;
+  }
+
+  .frame-left {
+    margin: 2em 0;
+    min-height: 155px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .frame-right {
+    margin-bottom: 1em;
+    width: 100%;
+  }
+
+  .frame-right .date {
+    margin-top: 0.5em;
+  }
+
+  .frame-right .detail {
+    display: flex;
+    justify-content: space-evenly;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    font-size: 0.85em;
+  }
+
+  .container {
+    padding: 0;
+  }
+
+  .frame {
+    margin: 1em 0;
+    padding: 2em 1em;
+  }
+
+  .frame-left {
+    min-height: 120px;
+    margin-top: 0.5em;
+  }
+
+  .frame-right .detail {
+    flex-direction: column;
+  }
+
+  .frame-left .temperature img.icon-weather {
+    max-height: 70px;
+    margin-right: 0.5em;
+  }
+
+  .frame-left .temperature .degrees {
+    max-width: 40px;
+    margin-left: 0.5em;
+  }
+
+  .frame-left .temperature h2 {
+    font-size: 3.5em;
+  }
+
+  .frame-left .temperature img {
+    max-height: 50px;
+  }
+
+  .frame-left h3 {
+    font-size: 2.2em;
+  }
+
+  .frame-left .temperature .degrees button {
+    padding: 5px;
+  }
+
+  .frame-left h4 {
+    font-size: 1.2em;
+    margin-top: 0.5em;
+  }
+
+  .frame-right {
+    margin-bottom: 0;
+  }
+
+  .frame-right h2 {
+    font-size: 1.5em;
+  }
+
+  .frame-right p {
+    font-size: 1em;
+  }
+
+  .frame-daily h3 {
+    font-size: 1.3em;
+  }
+
+  .frame-daily h4 {
+    font-size: 1.15em;
+  }
+
+  .frame-daily p {
+    font-size: 1em;
+  }
+
+  .frame-daily img {
+    max-height: 90px;
+  }
 }

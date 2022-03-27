@@ -57,38 +57,40 @@ const Hourly = ({ hourly, unit = "F" }) => {
   return (
     <div className="frame">
       <h2 className="margin-0">Hourly</h2>
-      <svg
-        version="1.2"
-        viewBox="0 0 1300 500"
-        xmlns="http://www.w3.org/2000/svg"
-        className="graph"
-        id="graph"
-      >
-        <title id="title">Hourly Temperature</title>
-        <g className="labels x-labels" id="x-labels">
-          {xLabels}
-        </g>
-        <g className="labels t-labels" id="t-labels">
-          {tLabels}
-        </g>
-        <g className="grid y-grid" id="y-grid">
-          <line x1="50" x2="1250" y1="450" y2="450"></line>
-        </g>
-        <g className="labels y-labels"></g>
-        <polyline
-          fill="none"
-          stroke="#eee"
-          strokeWidth="2"
-          id="polyline"
-          points={pointsStr}
-        />
-        <polygon
-          fill="#eee"
-          fillOpacity="0.2"
-          stroke="none"
-          points={`50,450 ${pointsStr} 1250,450`}
-        ></polygon>
-      </svg>
+      <div className="hourly-graph">
+        <svg
+          version="1.2"
+          viewBox="0 0 1300 500"
+          xmlns="http://www.w3.org/2000/svg"
+          className="graph"
+          id="graph"
+        >
+          <title id="title">Hourly Temperature</title>
+          <g className="labels x-labels" id="x-labels">
+            {xLabels}
+          </g>
+          <g className="labels t-labels" id="t-labels">
+            {tLabels}
+          </g>
+          <g className="grid y-grid" id="y-grid">
+            <line x1="50" x2="1250" y1="450" y2="450"></line>
+          </g>
+          <g className="labels y-labels"></g>
+          <polyline
+            fill="none"
+            stroke="#eee"
+            strokeWidth="2"
+            id="polyline"
+            points={pointsStr}
+          />
+          <polygon
+            fill="#eee"
+            fillOpacity="0.2"
+            stroke="none"
+            points={`50,450 ${pointsStr} 1250,450`}
+          ></polygon>
+        </svg>
+      </div>
     </div>
   );
 };

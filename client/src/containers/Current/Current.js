@@ -48,25 +48,30 @@ const Current = ({
       <div id="current" className="flex">
         <div className="frame-left center">
           <div className="temperature">
-            <img
-              src={`static/icons/${currentWeatherIcon}.svg`}
-              alt={`${currentWeatherIconDescription}`}
-            ></img>
             {isCurrentDay ? (
-              <h2>
-                {unit === "F"
-                  ? kelvinToFahrenheit(data.temp)
-                  : kelvinToCelsius(data.temp)}
-                °
-              </h2>
+              <>
+                <img
+                  src={`static/icons/${currentWeatherIcon}.svg`}
+                  alt={`${currentWeatherIconDescription}`}
+                  className="icon-weather"
+                ></img>
+                <h2>
+                  {unit === "F"
+                    ? kelvinToFahrenheit(data.temp)
+                    : kelvinToCelsius(data.temp)}
+                  °
+                </h2>
+              </>
             ) : (
               <>
+                <img src={`static/icons/maxTemp.svg`} alt="Temperature"></img>
                 <h3>
                   {unit === "F"
                     ? kelvinToFahrenheit(data.temp.max)
                     : kelvinToCelsius(data.temp.max)}
                   °
                 </h3>
+                <img src={`static/icons/minTemp.svg`} alt="Temperature"></img>
                 <h3>
                   {unit === "F"
                     ? kelvinToFahrenheit(data.temp.min)
@@ -93,20 +98,23 @@ const Current = ({
               </button>
             </div>
           </div>
-          <h3>{currentDescription}</h3>
+          <h4>{currentDescription}</h4>
         </div>
         <div className="frame-right right">
+          <p className="country">{`${city?.country}`}</p>
           <h2>{city?.name}</h2>
           <p className="date">{`${dayOfWeek} ${isCurrentDay ? time : ""}`}</p>
-          <p>
-            <strong>Humidity: </strong> {currentHumidity} %
-          </p>
-          <p>
-            <strong>Wind: </strong> {currentWind} m/sec
-          </p>
-          <p>
-            <strong>Precipitation: </strong> {currentPrecipitation} %
-          </p>
+          <div className="detail">
+            <p>
+              <strong>Humidity: </strong> {currentHumidity} %
+            </p>
+            <p>
+              <strong>Wind: </strong> {currentWind} m/sec
+            </p>
+            <p>
+              <strong>Precipitation: </strong> {currentPrecipitation} %
+            </p>
+          </div>
         </div>
       </div>
     </div>
