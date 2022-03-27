@@ -4,7 +4,7 @@ The application provides weather information based on your location for the curr
 
 > To get the location data, you must accept that the browser accesses your location data. In addition, the application will store in the localStorage your preferred temperature unit, which can be either degree Celsius or degrees Fahrenheit.
 
-Online test version: https://forecast.annieazana1.repl.co/
+Online test version: https://wforecast-app.herokuapp.com/
 
 ## Steps to install the project locally
 
@@ -48,11 +48,11 @@ Go to the browser: http://localhost:3001/
 
 ### Viewing the application - Current weather
 
-![Architecture](/readme_images/application.png "Architecture")
+![Weather Forecast Application](/readme_images/application.png "Application")
 
 ### Viewing the application - Forecast weather
 
-![Architecture](/readme_images/application2.png "Architecture")
+![Weather Forecast Application](/readme_images/application2.png "Application")
 
 ## Development process
 
