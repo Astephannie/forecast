@@ -3,7 +3,9 @@ const path = require("path");
 const axios = require("axios");
 const url = "https://api.openweathermap.org/data/2.5";
 const app = express();
-const appid = process.env.API_KEY || "9af1888128abd4b217988954ec61affd";
+require("dotenv").config();
+
+const appid = process.env.API_KEY;
 const port = process.env.PORT || 3001;
 
 app.use(express.static(path.join(__dirname, "../client/build")));

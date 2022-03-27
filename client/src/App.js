@@ -47,7 +47,6 @@ const App = () => {
 
     getGeoLocationStatus()
       .then((status) => {
-        console.log({ status });
         setGeolocationStatus(status);
       })
       .catch((error) => console.log({ error }));
