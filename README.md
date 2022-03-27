@@ -1,10 +1,21 @@
 # Weather forecast
 
-The application provides weather information based on your location for the current day and the next 5 days. In addition, it has a graph of how the temperature change will behave for the next 24 hours. The information is obtained in degrees Celsius and degrees Fahrenheit. 
+The application provides weather information based on your location for the current day and the next 5 days. In addition, it has a graph of how the temperature change will behave for the next 24 hours. The information is obtained in degrees Celsius and degrees Fahrenheit.
 
 > To get the location data, you must accept that the browser accesses your location data. In addition, the application will store in the localStorage your preferred temperature unit, which can be either degree Celsius or degrees Fahrenheit.
 
 ## Steps to install the project locally
+
+### Get an OpenWeatherMap API Key
+
+- Create an OpenWeatherMap account in https://openweathermap.org/
+- Get an OpenWeatherMap API key.
+
+### Insert API key to the project
+
+- In the .env file insert your OpenWeatherMap API key.
+
+### Install dependencies and execute the project
 
 Install dependencies
 
@@ -16,7 +27,13 @@ Run the project server
 
 Go to the browser: http://localhost:3001/
 
-<br>
+### Viewing the application - Current weather
+
+![Architecture](/readme_images/application.png "Architecture")
+
+### Viewing the application - Forecast weather
+
+![Architecture](/readme_images/application2.png "Architecture")
 
 ## Development process
 
