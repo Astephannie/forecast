@@ -33,6 +33,8 @@ app.get("/api/get-one-call/", (req, res) => {
       res.json(data);
     })
     .catch((error) => {
+      delete error.config;
+      delete error.stack;
       res.json(error);
     });
 });
@@ -48,6 +50,8 @@ app.get("/api/get-city/", (req, res) => {
       res.json(filterCity(data));
     })
     .catch((error) => {
+      delete error.config;
+      delete error.stack;
       res.json(error);
     });
 });

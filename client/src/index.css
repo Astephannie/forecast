@@ -1,6 +1,13 @@
+:root {
+  --darkblue: #34495e;
+  --lightgray: #ecf0f1;
+  --silver: #95a5a6;
+  --smoke: rgba(250, 250, 250, 0.1);
+}
+
 body {
-  background-color: rgba(236, 240, 241, 1);
-  color: #f3f3f3;
+  background-color: var(--lightgray);
+  color: var(--lightgray);
   font-family: "Noto Sans", sans-serif;
 }
 
@@ -32,8 +39,20 @@ body {
   justify-content: space-between;
 }
 
+.initial-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  height: 90vh;
+  font-size: 1.5em;
+  padding: 0 2em;
+  color: var(--darkblue);
+  text-align: center;
+}
+
 .frame {
-  background-color: rgba(52, 73, 94, 1);
+  background-color: var(--darkblue);
   border-radius: 1em;
   margin: 2em 0;
   padding: 2em 3em;
@@ -73,7 +92,7 @@ body {
 }
 
 .frame-left .temperature .degrees button {
-  color: #ddd;
+  color: var(--lightgray);
   margin: 0.5em;
   background-color: transparent;
   margin: 0;
@@ -83,7 +102,7 @@ body {
 }
 
 .frame-left .temperature .degrees .selected {
-  color: #f3f3f3;
+  color: var(--lightgray);
   font-size: 2.3em;
   font-weight: 700;
 }
@@ -102,7 +121,7 @@ body {
 
 .frame-right p.country {
   font-size: 0.8em;
-  color: #c8c8c8;
+  color: var(--silver);
   margin: 0;
 }
 
@@ -132,16 +151,16 @@ body {
 }
 
 .frame-daily.selected {
-  background: rgba(255, 255, 255, 0.15);
+  background: var(--smoke);
 }
 
 .frame-daily .temperature span.max_temperature {
-  color: #f3f3f3;
+  color: var(--lightgray);
   font-size: 1.7em;
 }
 
 .frame-daily .temperature span.min_temperature {
-  color: #ddd;
+  color: var(--lightgray);
   font-size: 1.2em;
   padding-left: 1em;
 }
@@ -172,7 +191,7 @@ body {
 }
 
 .graph .grid {
-  stroke: #eee;
+  stroke: var(--lightgray);
   stroke-dasharray: 0;
   stroke-width: 1;
 }
@@ -310,4 +329,8 @@ body {
   .frame-daily img {
     max-height: 90px;
   }
+}
+
+.initial-loading {
+  display: none;
 }

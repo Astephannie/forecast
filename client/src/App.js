@@ -4,14 +4,19 @@ import { Daily } from "./containers/Daily/Daily";
 import { Hourly } from "./containers/Hourly/Hourly";
 import { useRequest } from "./hooks/request";
 import { getCity, getOneCall } from "./api/openweather";
-import { formatLocalDate, getLocation } from "./utils/utils";
-import { DATA } from "./utils/data";
+import {
+  formatLocalDate,
+  getLocation,
+  errorCodeMessage,
+  getGeoLocationStatus,
+} from "./utils/utils";
 
 const App = () => {
   const [position, setPosition] = useState({ lat: null, lon: null });
   const [unit, setUnit] = useState("F");
   const [data, setData] = useState({});
   const [selectDay, setSelectDay] = useState("");
+  const [geolocationStatus, setGeolocationStatus] = useState(null);
 
   const {
     data: success,
@@ -39,6 +44,13 @@ const App = () => {
     } else {
       localStorage.setItem("Unit", unit);
     }
+
+    getGeoLocationStatus()
+      .then((status) => {
+        console.log({ status });
+        setGeolocationStatus(status);
+      })
+      .catch((error) => console.log({ error }));
   }, []);
 
   useEffect(() => {
@@ -50,21 +62,10 @@ const App = () => {
 
   useEffect(() => {
     if (success) {
-      if (success?.name === "Error") {
-        setData(DATA);
-        setSelectDay(formatLocalDate(DATA.daily[0].dt));
-      } else {
-        setData(success);
-        setSelectDay(formatLocalDate(success.daily[0].dt));
-      }
+      setData(success);
+      setSelectDay(formatLocalDate(success.daily[0].dt));
     }
   }, [success]);
-
-  useEffect(() => {
-    if (error) {
-      console.log({ error });
-    }
-  }, [error]);
 
   const changeUnit = (unit) => {
     setUnit(unit);
@@ -73,10 +74,28 @@ const App = () => {
 
   return (
     <div className="container">
+      <></>
       {position.lat === null && position.lon === null && (
-        <div>Give me permissions</div>
+        <p className="initial-message">
+          {`We are obtaining your location data. 
+          
+          ${
+            geolocationStatus === "prompt"
+              ? "You should allow access to your location to continue."
+              : ""
+          }
+          
+          ${
+            geolocationStatus === "reject"
+              ? "You don't allow access to your location."
+              : ""
+          }`}
+        </p>
       )}
-      {loading && <div>Loading ...</div>}
+      {loading && <p className="initial-message">Loading ...</p>}
+      {error && (
+        <p className="initial-message">{errorCodeMessage(error.status)}</p>
+      )}
       {data?.current && data?.daily.length > 0 && data?.hourly.length > 0 && (
         <>
           <Current

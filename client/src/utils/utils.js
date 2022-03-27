@@ -29,3 +29,38 @@ export const formatLocalDate = (dt) => {
   const date = new Date(dt * 1000);
   return date.toLocaleString().split(",")[0];
 };
+
+export const errorCodeMessage = (status) => {
+  let errorMessage = "";
+
+  if (status === 401) {
+    errorMessage = "You need to check your Openweathermap API request.";
+  }
+  if (status === 404) {
+    errorMessage =
+      "The format of your Openweathermap API request is incorrect.";
+  }
+  if (status === 429) {
+    errorMessage =
+      "You have tried several times with your Openweathermap free plan subscription.";
+  }
+  if (status === 500 || status === 502 || status === 503 || status === 504) {
+    errorMessage = "Contact Openweathermap for asistance";
+  }
+
+  return errorMessage;
+};
+
+export const getGeoLocationStatus = async () => {
+  if (navigator.permissions) {
+    const response = await navigator.permissions.query({ name: "geolocation" });
+    if (response.state === "granted") {
+      return "granted";
+    } else if (response.state === "prompt") {
+      return "prompt";
+    } else {
+      return "reject";
+    }
+  }
+  return "unsupported";
+};
